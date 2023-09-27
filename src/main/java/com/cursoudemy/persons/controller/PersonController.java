@@ -3,6 +3,7 @@ package com.cursoudemy.persons.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,17 +29,18 @@ public class PersonController {
 
     }
 
-    @GetMapping
+    @GetMapping(produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
     public List<PersonDto> findAll() {
         return personService.getAll();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping(value = "/{id}", produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+
     public PersonDto findById(@PathVariable(value = "id") Long id) {
         return personService.findById(id);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping(value = "/{id}")
     public PersonDto update(@PathVariable(value = "id") Long id, @RequestBody PersonDto personDto) {
 
         return personService.update(id, personDto);
