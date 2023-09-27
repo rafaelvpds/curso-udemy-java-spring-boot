@@ -2,16 +2,13 @@ package com.cursoudemy.persons.service;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cursoudemy.persons.exceptions.RessourcePersonNotFaundExceptions;
-import com.cursoudemy.persons.mapper.PersonMapper;
-import com.cursoudemy.persons.models.Person;
-import com.cursoudemy.persons.models.dto.PersonDto;
+import com.cursoudemy.persons.mapper.PersonMapperV01;
+import com.cursoudemy.persons.models.dto.dtoV01.PersonDto;
 import com.cursoudemy.persons.repository.PersonRepository;
 
 @Service
@@ -21,27 +18,23 @@ public class PersonService implements Serializable {
     private PersonRepository personRepository;
 
     @Autowired
-    private PersonMapper personMapper;
+    private PersonMapperV01 personMapper;
 
     public PersonDto created(PersonDto personDto) {
-        var personEntity = personMapper.toEntity(personDto);
-        var personSave = personRepository.save(personEntity);
-        var personDtos = personMapper.toDto(personSave);
-        return personDtos;
+
+        return personMapper.toDto(personRepository.save(personMapper.toEntity(personDto)));
     }
 
-    public List<PersonDto> findAll() {
-        var listPerson = personRepository.findAll().stream().map(personMapper::toDto).collect(Collectors.toList());
+    public List<PersonDto> getAll() {
 
-        return listPerson;
+        return personMapper.mapDto(personRepository.findAll());
     }
 
     public PersonDto findById(Long id) {
         var entity = personRepository.findById(id)
                 .orElseThrow(() -> new RessourcePersonNotFaundExceptions("Person Not faund"));
-        var personDto = personMapper.toDto(entity);
 
-        return personDto;
+        return personMapper.toDto(entity);
 
     }
 
@@ -56,10 +49,7 @@ public class PersonService implements Serializable {
         entity.setGender(person.gender());
 
         var personSave = personRepository.save(entity);
-
-        var personDto = personMapper.toDto(personSave);
-
-        return personDto;
+        return personMapper.toDto(personSave);
 
     }
 
