@@ -16,5 +16,6 @@ public class ExecptionResponse {
     private Date timestamp;
     private String mensage;
     private String datail;
+    
 
 }

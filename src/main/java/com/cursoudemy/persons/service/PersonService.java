@@ -2,6 +2,7 @@ package com.cursoudemy.persons.service;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.cursoudemy.persons.controller.PersonController;
 import com.cursoudemy.persons.exceptions.RessourcePersonNotFaundExceptions;
-import com.cursoudemy.persons.mapper.PersonMapperV01;
+import com.cursoudemy.persons.mapper.PersonsMapper;
 import com.cursoudemy.persons.models.dto.dtoV01.PersonDtoV2;
 import com.cursoudemy.persons.repository.PersonRepository;
 
@@ -21,7 +22,7 @@ public class PersonService implements Serializable {
     private PersonRepository personRepository;
 
     @Autowired
-    private PersonMapperV01 personMapper;
+    private PersonsMapper personMapper;
 
     public PersonDtoV2 created(PersonDtoV2 personDto) {
 
@@ -33,9 +34,9 @@ public class PersonService implements Serializable {
 
     public List<PersonDtoV2> getAll() {
 
-        var persons = personMapper.mapDtoV2(personRepository.findAll());
-        persons.stream()
-                .forEach(p -> p.add(linkTo(methodOn(PersonController.class).findById(p.getId())).withSelfRel()));
+        var persons = personRepository.findAll().stream().map(personMapper::toDtoV2).collect(Collectors.toList());
+
+        persons.forEach(p -> p.add(linkTo(methodOn(PersonController.class).findById(p.getId())).withSelfRel()));
         return persons;
     }
 

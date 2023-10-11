@@ -3,7 +3,11 @@ package com.cursoudemy.persons;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.info.Info;
+
 @SpringBootApplication
+@OpenAPIDefinition(info = @Info(title = "RESTFUL API with Java Spring Boot", version = "1", description = "Api desenvolvida em Java Spring Boot"))
 public class PersonsApplication {
 
 	public static void main(String[] args) {
