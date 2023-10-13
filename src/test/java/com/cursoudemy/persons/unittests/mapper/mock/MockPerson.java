@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.cursoudemy.persons.models.Person;
-import com.cursoudemy.persons.models.dto.dtoV01.PersonDtoV2;
+import com.cursoudemy.persons.models.dto.dtoV01.PersonDTO;
 
 public class MockPerson {
 
@@ -12,7 +12,7 @@ public class MockPerson {
         return mockEntity(0);
     }
 
-    public PersonDtoV2 mockVO() {
+    public PersonDTO mockVO() {
         return mockVO(0);
     }
 
@@ -24,8 +24,8 @@ public class MockPerson {
         return persons;
     }
 
-    public List<PersonDtoV2> mockVOList() {
-        List<PersonDtoV2> persons = new ArrayList<>();
+    public List<PersonDTO> mockVOList() {
+        List<PersonDTO> persons = new ArrayList<>();
         for (int i = 0; i < 14; i++) {
             persons.add(mockVO(i));
         }
@@ -42,8 +42,8 @@ public class MockPerson {
         return person;
     }
 
-    public PersonDtoV2 mockVO(Integer number) {
-        PersonDtoV2 person = new PersonDtoV2();
+    public PersonDTO mockVO(Integer number) {
+        PersonDTO person = new PersonDTO();
         person.setAddress("Addres Test" + number);
         person.setFirstName("First Name Test" + number);
         person.setGender(((number % 2) == 0) ? 'M' : 'F');

@@ -17,8 +17,8 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.cursoudemy.persons.mapper.PersonsMapper;
 import com.cursoudemy.persons.models.Person;
+import com.cursoudemy.persons.models.mapper.PersonMapper;
 import com.cursoudemy.persons.repository.PersonRepository;
 import com.cursoudemy.persons.service.PersonService;
 import com.cursoudemy.persons.unittests.mapper.mock.MockPerson;
@@ -36,7 +36,7 @@ class PersonServicesTest {
     PersonRepository repository;
 
     @Mock
-    PersonsMapper personsMapper;
+    PersonMapper personsMapper;
 
     @BeforeEach
     void setUpMocks() throws Exception {

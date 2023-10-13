@@ -13,9 +13,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cursoudemy.persons.models.Book;
 import com.cursoudemy.persons.models.Person;
-import com.cursoudemy.persons.models.dto.dtoV01.PersonDTO;
-import com.cursoudemy.persons.service.PersonService;
+import com.cursoudemy.persons.models.dto.dtoV01.BookDTO;
+import com.cursoudemy.persons.service.BookService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
@@ -25,31 +26,31 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
-@RequestMapping("/persons")
-@Tag(name = "People", description = "Endipoints for Managing People")
-public class PersonController {
+@RequestMapping("/books")
+@Tag(name = "Books", description = "Endipoints for Managing Books")
+public class BoockController {
 
         @Autowired
-        private PersonService personService;
+        private BookService bookService;
 
         @PostMapping
-        @Operation(summary = "Add a new Person", description = " Adds a new Person by passing in a Json represatation of the person", tags = {
-                        "People" }, responses = {
+        @Operation(summary = "Add a new Books", description = " Adds a new Books by passing in a Json represatation of the Books", tags = {
+                        "Books" }, responses = {
                                         @ApiResponse(description = "Success", responseCode = "200", content = {
-                                                        @Content(schema = @Schema(implementation = Person.class))
+                                                        @Content(schema = @Schema(implementation = Book.class))
                                         }),
                                         @ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
                                         @ApiResponse(description = "Unauthorized", responseCode = "401", content = @Content),
                                         @ApiResponse(description = "Internal Server Error", responseCode = "500", content = @Content)
                         })
-        public PersonDTO created(@RequestBody PersonDTO personDto) {
+        public BookDTO created(@RequestBody BookDTO bookDTO) {
 
-                return personService.created(personDto);
+                return bookService.created(bookDTO);
 
         }
 
         @GetMapping(produces = { MediaType.APPLICATION_JSON_VALUE })
-        @Operation(summary = "Find All People", description = " Find All People", tags = { "People" }, responses = {
+        @Operation(summary = "Find All Books", description = " Find All Books", tags = { "Books" }, responses = {
                         @ApiResponse(description = "Success", responseCode = "200", content = {
                                         @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, array = @ArraySchema(schema = @Schema(implementation = Person.class)))
                         }),
@@ -60,13 +61,13 @@ public class PersonController {
         }
 
         )
-        public List<PersonDTO> findAll() {
-                return personService.getAll();
+        public List<BookDTO> findAll() {
+                return bookService.getAll();
         }
 
         @GetMapping(value = "/{id}", produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE,
                         "application/x-yaml" })
-        @Operation(summary = "Find a People", description = " Find a People", tags = { "People" }, responses = {
+        @Operation(summary = "Find a Books", description = " Find a Books", tags = { "Books" }, responses = {
                         @ApiResponse(description = "Success", responseCode = "200", content = {
                                         @Content(schema = @Schema(implementation = Person.class))
                         }),
@@ -77,13 +78,13 @@ public class PersonController {
                         @ApiResponse(description = "Internal Server Error", responseCode = "500", content = @Content)
         })
 
-        public PersonDTO findById(@PathVariable(value = "id") Long id) {
-                return personService.findById(id);
+        public BookDTO findById(@PathVariable(value = "id") Long id) {
+                return bookService.findById(id);
         }
 
         @PutMapping(value = "/{id}")
         @Operation(summary = "Update a Person", description = " Update a Person by passing in a Json represatation of the person", tags = {
-                        "People" }, responses = {
+                        "Books" }, responses = {
                                         @ApiResponse(description = "Success", responseCode = "200", content = {
                                                         @Content(schema = @Schema(implementation = Person.class))
                                         }),
@@ -92,13 +93,13 @@ public class PersonController {
                                         @ApiResponse(description = "Not Found", responseCode = "401", content = @Content),
                                         @ApiResponse(description = "Internal Server Error", responseCode = "500", content = @Content)
                         })
-        public PersonDTO update(@PathVariable(value = "id") Long id, @RequestBody PersonDTO personDto) {
+        public BookDTO update(@PathVariable(value = "id") Long id, @RequestBody BookDTO bookDTO) {
 
-                return personService.update(id, personDto);
+                return bookService.update(id, bookDTO);
         }
 
         @DeleteMapping(value = "/{id}")
-        @Operation(summary = "Delete a People", description = "Delete a People", tags = { "People" }, responses = {
+        @Operation(summary = "Delete a Books", description = "Delete a Books", tags = { "Books" }, responses = {
                         @ApiResponse(description = "No content", responseCode = "204", content = @Content),
                         @ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
                         @ApiResponse(description = "Unauthorized", responseCode = "401", content = @Content),
@@ -107,6 +108,6 @@ public class PersonController {
         })
 
         public void delete(@PathVariable(value = "id") Long id) {
-                personService.delete(id);
+                bookService.delete(id);
         }
 }

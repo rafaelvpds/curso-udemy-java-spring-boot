@@ -1,5 +1,7 @@
 package com.cursoudemy.persons.models.dto.dtoV01;
 
+import java.util.Date;
+
 import org.springframework.hateoas.RepresentationModel;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -10,18 +12,17 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@JsonPropertyOrder({ "id", "firstName", "lastName", "gender", "address" })
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class PersonDtoV2 extends RepresentationModel<PersonDtoV2> {
-
-        private Long id;
-        @JsonProperty("first_name")
-        private String firstName;
-        @JsonProperty("last_name")
-        private String lastName;
-        private String address;
-        private Character gender;
+@JsonPropertyOrder({ "id", "author", "launchDate", "price", "title" })
+public class BookDTO extends RepresentationModel {
+    private Long id;
+    @JsonProperty("author")
+    private String author;
+    @JsonProperty("launchDate")
+    private Date launch_date;
+    private Double price;
+    private String title;
 }
