@@ -24,6 +24,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
+//@CrossOrigin // Se eu defino nada, eu permito todas as requisições para esse cara
 @RestController
 @RequestMapping("/persons")
 @Tag(name = "People", description = "Endipoints for Managing People")
@@ -32,6 +33,7 @@ public class PersonController {
         @Autowired
         private PersonService personService;
 
+        // @CrossOrigin(origins = { "http://localhost:8080", "http://localhost:3035" })
         @PostMapping
         @Operation(summary = "Add a new Person", description = " Adds a new Person by passing in a Json represatation of the person", tags = {
                         "People" }, responses = {
@@ -64,6 +66,7 @@ public class PersonController {
                 return personService.getAll();
         }
 
+        // @CrossOrigin(origins = "http://localhost:8080")
         @GetMapping(value = "/{id}", produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE,
                         "application/x-yaml" })
         @Operation(summary = "Find a People", description = " Find a People", tags = { "People" }, responses = {

@@ -14,7 +14,7 @@ import com.cursoudemy.persons.controller.BoockController;
 import com.cursoudemy.persons.controller.PersonController;
 import com.cursoudemy.persons.exceptions.RessourcePersonNotFaundExceptions;
 import com.cursoudemy.persons.models.dto.dtoV01.BookDTO;
-import com.cursoudemy.persons.models.mapper.BookMaper;
+import com.cursoudemy.persons.models.mapper.BooksMaper;
 import com.cursoudemy.persons.repository.BookRepository;
 
 @Service
@@ -24,7 +24,7 @@ public class BookService implements Serializable {
     private BookRepository bookRepository;
 
     @Autowired
-    private BookMaper bookMaper;
+    private BooksMaper bookMaper;
 
     public BookDTO created(BookDTO bookDTO) {
 
