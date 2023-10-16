@@ -1,4 +1,4 @@
-package com.cursoudemy.persons.models.dto.dtoV01;
+package com.cursoudemy.persons.dto.dtoV01;
 
 import java.util.Date;
 

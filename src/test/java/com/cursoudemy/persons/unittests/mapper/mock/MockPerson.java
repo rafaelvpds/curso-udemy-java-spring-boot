@@ -3,8 +3,8 @@ package com.cursoudemy.persons.unittests.mapper.mock;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.cursoudemy.persons.dto.dtoV01.PersonDTO;
 import com.cursoudemy.persons.models.Person;
-import com.cursoudemy.persons.models.dto.dtoV01.PersonDTO;
 
 public class MockPerson {
 

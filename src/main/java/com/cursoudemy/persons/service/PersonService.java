@@ -10,9 +10,9 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 import org.springframework.stereotype.Service;
 
 import com.cursoudemy.persons.controller.PersonController;
+import com.cursoudemy.persons.dto.dtoV01.PersonDTO;
 import com.cursoudemy.persons.exceptions.RessourcePersonNotFaundExceptions;
-import com.cursoudemy.persons.models.dto.dtoV01.PersonDTO;
-import com.cursoudemy.persons.models.mapper.PersonMapper;
+import com.cursoudemy.persons.mapper.PersonMapper;
 import com.cursoudemy.persons.repository.PersonRepository;
 
 @Service

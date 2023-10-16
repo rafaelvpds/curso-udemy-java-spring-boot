@@ -1,12 +1,12 @@
-package com.cursoudemy.persons.models.mapper;
+package com.cursoudemy.persons.mapper;
 
 import org.mapstruct.Mapper;
 
+import com.cursoudemy.persons.dto.dtoV01.BookDTO;
 import com.cursoudemy.persons.models.Book;
-import com.cursoudemy.persons.models.dto.dtoV01.BookDTO;
 
 @Mapper(componentModel = "spring")
-public interface BooksMaper {
+public interface BooksMapper {
     BookDTO toDto(Book entity);
 
     Book toEntity(BookDTO dto);

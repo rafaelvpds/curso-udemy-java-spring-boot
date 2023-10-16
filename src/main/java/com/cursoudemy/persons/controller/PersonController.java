@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cursoudemy.persons.dto.dtoV01.PersonDTO;
 import com.cursoudemy.persons.models.Person;
-import com.cursoudemy.persons.models.dto.dtoV01.PersonDTO;
 import com.cursoudemy.persons.service.PersonService;
 
 import io.swagger.v3.oas.annotations.Operation;

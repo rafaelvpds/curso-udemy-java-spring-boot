@@ -1,9 +1,9 @@
-package com.cursoudemy.persons.models.mapper;
+package com.cursoudemy.persons.mapper;
 
 import org.mapstruct.Mapper;
 
+import com.cursoudemy.persons.dto.dtoV01.PersonDTO;
 import com.cursoudemy.persons.models.Person;
-import com.cursoudemy.persons.models.dto.dtoV01.PersonDTO;
 
 @Mapper(componentModel = "spring")
 public interface PersonMapper {
