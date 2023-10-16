@@ -16,7 +16,7 @@
 	<properties>
 		<java.version>17</java.version>
 		<org.mapstruct.version>1.5.5.Final</org.mapstruct.version>
-		<java-jwt.version>3.18</java-jwt.version>
+		<java-jwt.version>3.18.3</java-jwt.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -27,6 +27,13 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.auth0</groupId>
+			<artifactId>java-jwt</artifactId>
+			<version>${java-jwt.version}</version>
+		</dependency>
+
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
