@@ -1,5 +1,7 @@
 cors:
-  originPatterns: http://localhost:8080,http://localhost:3000 
+  originPatterns: http://localhost:8080,http://localhost:3000
+file:
+  upload-dir: C:\WorkAndStudy\Estudos\Curso Udemy\REST API's RESTFul do 0 à AWS c. Spring Boot 3 Java e Docker\secao7\uploads
 security:
   jwt:
     token:
@@ -18,7 +20,13 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
     show-sql: false
+  servlet:
+     multipart:
+       enabled: true
+       file-size-threshold: 2KB
+       max-file-size: 200MB
+       max-request-size: 215MB
 springdoc:
-  pathsToMatch: /persons/**, /books/**
+  pathsToMatch: /api/**,/auth
   swagger-ui:
     use-root-path: true

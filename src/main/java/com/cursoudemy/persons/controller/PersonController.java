@@ -26,7 +26,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 //@CrossOrigin // Se eu defino nada, eu permito todas as requisições para esse cara
 @RestController
-@RequestMapping("/persons")
+@RequestMapping("/api/persons")
 @Tag(name = "People", description = "Endipoints for Managing People")
 public class PersonController {
 
