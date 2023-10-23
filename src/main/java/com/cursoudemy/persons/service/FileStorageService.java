@@ -6,12 +6,15 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.cursoudemy.persons.config.FileStorageConfig;
 import com.cursoudemy.persons.exceptions.FileStorageExceptions;
+import com.cursoudemy.persons.exceptions.MyFileNotFoundException;
 
 @Service
 
@@ -52,5 +55,22 @@ public class FileStorageService {
             throw new FileStorageExceptions("Could not store the file! " + filename + " . Please try again!", e);
         }
 
+    }
+
+    public Resource loadFileAsResource(String filename) {
+        try {
+            // obtem o caminho ate o arquivo
+            Path filePath = this.fileStorageLocation.resolve(filename).normalize();
+            // Ele obtem o ressource atraves do arquivo
+            Resource resource = new UrlResource(filePath.toUri());
+            // Veficar se o ressource existe
+            if (resource.exists())
+                return resource;
+            else
+                throw new MyFileNotFoundException("File not Found");
+        } catch (Exception e) {
+
+            throw new MyFileNotFoundException("File not Found " + filename, e);
+        }
     }
 }
